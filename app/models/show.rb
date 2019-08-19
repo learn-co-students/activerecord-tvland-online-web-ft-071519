@@ -10,10 +10,13 @@ class Show < ActiveRecord::Base
       act.full_name
     end
   end
+
 def build_network(call_letters:)
   
- self.network = call_letters
-
+ new_network = Network.create(:call_letters => call_letters)
+ self.network = new_network
+  self.save
+  
 end  
 
 end
